@@ -8,69 +8,28 @@
     <link rel="stylesheet" href="style.css">
     <title>DatePicker</title>
 </head>
+<style>
+    .datepicker {
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 5px;
+        line-height: 24px;
+        width: 230px;
+    }
+    
+    .datepicker:focus {
+        outline: 0 none;
+        border: 1px solid #128312;
+    }
+</style>
 
 <body>
-    <div class="ui-datepicker-wrapper">
-        <div class="ui-datepicker-header">
-            <a href="#" class="ui-datepicker-btn ui-datepicker-prev-btn">&lt;</a>
-            <a href="#" class="ui-datepicker-btn ui-datepicker-next-btn">&gt;</a>
-            <span class="ui-datepicker-curr-month">2018-04-27</span>
-        </div>
-        <div class="ui-datepicker-body">
-            <table>
-                <thead>
-                    <tr>
-                        <th>一</th>
-                        <th>二</th>
-                        <th>三</th>
-                        <th>四</th>
-                        <th>五</th>
-                        <th>六</th>
-                        <th>七</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+    <input type="text" class="datepicker">
 </body>
 <script src="date.js"></script>
+<script src="main.js"></script>
+<script>
+    datepicker.init('.datepicker');
+</script>
 
 </html>
