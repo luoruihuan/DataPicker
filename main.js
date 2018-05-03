@@ -29,7 +29,7 @@
         for (var i = 0; i < monthDate.days.length; i++) {
             var date = monthDate.days[i];
             if (i % 7 === 0) { html += '<tr>' }
-            html += '<td>' + date.showDate + '</td>'
+            html += '<td class="' + addClass + '" data-date="' + date.date + '">' + date.showDate + '</td>'
             if (i % 7 === 6) { html += '</tr>' }
         }
         html +=
@@ -81,24 +81,48 @@
         $wrapper.addEventListener('click', function(e) {
             var $target = e.target;
             if (!$target.classList.contains('ui-datepicker-btn')) return;
-
             //上一月
-            console.log(monthDate);
             if ($target.classList.contains('ui-datepicker-prev-btn')) {
-                monthDate.year--;
-                if (monthDate.month === 0) {
+                if (monthDate.month == 1) {
                     monthDate.month = 12;
+                    monthDate.year--;
+                } else {
+                    monthDate.month--;
                 }
-                monthDate.month--;
-            } else if ($target.classList.contains('ui-datepicker-next-btn')) {
                 //下一月
-                monthDate.month++;
+            } else if ($target.classList.contains('ui-datepicker-next-btn')) {
                 if (monthDate.month === 12) {
                     monthDate.month = 1;
                     monthDate.year++;
+                } else {
+                    monthDate.month++;
                 }
             }
             datepicker.render();
         }, false)
+
+        //日期选中事件
+        $wrapper.addEventListener('click', function(e) {
+            var $target = e.target;
+            if ($target.tagName.toLowerCase() !== 'td') return;
+
+            var date = new Date(monthDate.year, monthDate.month - 1, $target.dataset.date);
+            $input.value = format(date);
+        }, false)
+
+        //时间格式化
+        function format(date) {
+            var ret = '';
+            var paddingDate = function(num) {
+                if (num <= 9) {
+                    return '0' + num;
+                }
+                return num;
+            }
+            ret += date.getFullYear() + '-';
+            ret += paddingDate(date.getMonth() + 1) + '-';
+            ret += paddingDate(date.getDate());
+            return ret;
+        }
     }
 })()
