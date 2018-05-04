@@ -29,7 +29,7 @@
         for (var i = 0; i < monthDate.days.length; i++) {
             var date = monthDate.days[i];
             if (i % 7 === 0) { html += '<tr>' }
-            html += '<td class="' + addClass + '" data-date="' + date.date + '">' + date.showDate + '</td>'
+            html += '<td  data-date="' + date.date + '">' + date.showDate + '</td>'
             if (i % 7 === 6) { html += '</tr>' }
         }
         html +=
